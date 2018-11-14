@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import datos.Presupuesto;
 import manageXML.Leer_XML_Cars;
 import objetos.Accesory;
 import objetos.Engine;
@@ -35,7 +36,7 @@ import javax.swing.JButton;
 
 public class Compra_Accesorios extends JFrame {
 	private JPanel contentPane;
-	
+
 	JCheckBox acc1;
 	JCheckBox acc2;
 	JCheckBox acc3;
@@ -43,8 +44,8 @@ public class Compra_Accesorios extends JFrame {
 	JCheckBox acc5;
 	JCheckBox acc6;
 	String accesoriesSelecteds = "";
-	static int suma = 0;
-	private double precio;
+	
+	public static double precio;
 	ArrayList<String> accesoriosModelo;
 
 	/**
@@ -96,8 +97,6 @@ public class Compra_Accesorios extends JFrame {
 		acc5 = new JCheckBox("Tapacubos");
 
 		acc6 = new JCheckBox("CadenasDeNieve");
-		
-		
 
 		acc1.setEnabled((accesoriosModelo.contains("AutoRadio")));
 		acc2.setEnabled((accesoriosModelo.contains("SistemaMultimedia")));
@@ -105,7 +104,6 @@ public class Compra_Accesorios extends JFrame {
 		acc4.setEnabled((accesoriosModelo.contains("Altavoces")));
 		acc5.setEnabled((accesoriosModelo.contains("Tapacubos")));
 		acc6.setEnabled((accesoriosModelo.contains("CadenasDeNieve")));
-		
 
 		JLabel textArg = new JLabel("Total precio:");
 		textArg.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -116,7 +114,7 @@ public class Compra_Accesorios extends JFrame {
 		ArrayList<Accesory> accesories = lcars.getAccesoryAll();
 		precio = Integer.parseInt(modelos.get(Seleccion_Coche.cocheSeleccionado).getPrice());
 		ArgPrecio.setText(Double.toString(precio));
-		
+
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 
@@ -128,7 +126,7 @@ public class Compra_Accesorios extends JFrame {
 
 			}
 		});
-		
+
 		acc1.addActionListener(new ActionListener() {
 
 			@Override
@@ -136,7 +134,7 @@ public class Compra_Accesorios extends JFrame {
 				precio = acc1.isSelected() ? precio + Integer.parseInt(accesories.get(0).getPrice())
 						: precio - Integer.parseInt(accesories.get(0).getPrice());
 				ArgPrecio.setText(String.valueOf(precio));
-				accesoriesSelecteds  = accesoriesSelecteds + accesories.get(0).getPrice();
+				accesoriesSelecteds = accesoriesSelecteds + accesories.get(0).getPrice();
 			}
 		});
 		acc2.addActionListener(new ActionListener() {
@@ -146,7 +144,7 @@ public class Compra_Accesorios extends JFrame {
 				precio = acc2.isSelected() ? precio + Integer.parseInt(accesories.get(1).getPrice())
 						: precio - Integer.parseInt(accesories.get(1).getPrice());
 				ArgPrecio.setText(String.valueOf(precio));
-				accesoriesSelecteds  = accesoriesSelecteds + accesories.get(1).getPrice();
+				accesoriesSelecteds = accesoriesSelecteds + accesories.get(1).getPrice();
 			}
 		});
 		acc3.addActionListener(new ActionListener() {
@@ -156,7 +154,7 @@ public class Compra_Accesorios extends JFrame {
 				precio = acc3.isSelected() ? precio + Integer.parseInt(accesories.get(2).getPrice())
 						: precio - Integer.parseInt(accesories.get(2).getPrice());
 				ArgPrecio.setText(String.valueOf(precio));
-				accesoriesSelecteds  = accesoriesSelecteds + accesories.get(2).getPrice();
+				accesoriesSelecteds = accesoriesSelecteds + accesories.get(2).getPrice();
 			}
 		});
 		acc4.addActionListener(new ActionListener() {
@@ -166,7 +164,7 @@ public class Compra_Accesorios extends JFrame {
 				precio = acc4.isSelected() ? precio + Integer.parseInt(accesories.get(3).getPrice())
 						: precio - Integer.parseInt(accesories.get(3).getPrice());
 				ArgPrecio.setText(String.valueOf(precio));
-				accesoriesSelecteds  = accesoriesSelecteds + accesories.get(3).getPrice();
+				accesoriesSelecteds = accesoriesSelecteds + accesories.get(3).getPrice();
 			}
 		});
 		acc5.addActionListener(new ActionListener() {
@@ -176,7 +174,7 @@ public class Compra_Accesorios extends JFrame {
 				precio = acc5.isSelected() ? precio + Integer.parseInt(accesories.get(4).getPrice())
 						: precio - Integer.parseInt(accesories.get(4).getPrice());
 				ArgPrecio.setText(String.valueOf(precio));
-				accesoriesSelecteds  = accesoriesSelecteds + accesories.get(4).getPrice();
+				accesoriesSelecteds = accesoriesSelecteds + accesories.get(4).getPrice();
 			}
 		});
 		acc6.addActionListener(new ActionListener() {
@@ -186,7 +184,7 @@ public class Compra_Accesorios extends JFrame {
 				precio = acc6.isSelected() ? precio + Integer.parseInt(accesories.get(5).getPrice())
 						: precio - Integer.parseInt(accesories.get(5).getPrice());
 				ArgPrecio.setText(String.valueOf(precio));
-				accesoriesSelecteds  = accesoriesSelecteds + accesories.get(5).getPrice();
+				accesoriesSelecteds = accesoriesSelecteds + accesories.get(5).getPrice();
 			}
 		});
 
@@ -239,6 +237,7 @@ public class Compra_Accesorios extends JFrame {
 				re.getFrame().setVisible(true);
 				setVisible(false);
 			}
+
 		});
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

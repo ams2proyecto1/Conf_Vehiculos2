@@ -29,7 +29,20 @@ import java.util.Date;
 
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import datos.Presupuesto;
 import manageXML.Leer_XML_Cars;
 import manageXML.Leer_XML_Conf;
 import objetos.Engine;
@@ -38,7 +51,6 @@ import javax.swing.JButton;
 
 public class Resum {
 
-	
 	private JFrame frameResumen;
 
 	/**
@@ -129,7 +141,6 @@ public class Resum {
 			ArrayList<String> texto = new ArrayList<>();
 			while ((cadena = br.readLine()) != null) {
 				texto.add(cadena);
-				System.out.println(texto.get(cont));
 				cont++;
 			}
 
@@ -146,7 +157,66 @@ public class Resum {
 			fr.close();
 			br.close();
 
-			crearFicheroFinal(texto);
+			for (String string : texto) {
+				System.out.println(string);
+			}
+
+			String datosCliente = texto.get(1).replace("[Cliente] ", "");
+
+			String[] separado = datosCliente.split(",");
+			String modelo = texto.get(2).replace("[Modelo] ", "");
+			String submodelo = texto.get(3).replace("[SubModelo] ", "");
+			String accesorios = texto.get(4).replace("[Accesorios] ", "");
+
+			try {
+				Presupuesto p = new Presupuesto(separado[0], modelo, submodelo, accesorios,
+						Double.toString(Compra_Accesorios.precio));
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder build;
+				build = factory.newDocumentBuilder();
+				Document doc = build.newDocument();
+				Element rootElement = doc.createElement("Presupuesto");
+				doc.appendChild(rootElement);
+
+				Element empleado = doc.createElement(p.getClass().getSimpleName());
+				rootElement.appendChild(empleado);
+
+				Element nombre = doc.createElement("NombreCliente");
+				nombre.appendChild(doc.createTextNode(p.getNombreCliente()));
+				empleado.appendChild(nombre);
+
+				Element model = doc.createElement("Modelo");
+				model.appendChild(doc.createTextNode(p.getModelo()));
+				empleado.appendChild(model);
+
+				Element submodel = doc.createElement("SubModelo");
+				submodel.appendChild(doc.createTextNode(p.getSubmodelo()));
+				empleado.appendChild(submodel);
+
+				Element acc = doc.createElement("Accesorios");
+				acc.appendChild(doc.createTextNode(p.getAccesorios()));
+				empleado.appendChild(acc);
+
+				Element precioFinal = doc.createElement("PrecioTotal");
+				precioFinal.appendChild(doc.createTextNode(p.getPrecioTotal()));
+				empleado.appendChild(precioFinal);
+
+				TransformerFactory tf = TransformerFactory.newInstance();
+				Transformer trans = tf.newTransformer();
+				DOMSource dom = new DOMSource(doc);
+				File ffinal = new File("./ficheros/temp/fs_employee.xml");
+				StreamResult sr = new StreamResult(ffinal);
+				trans.transform(dom, sr);
+			} catch (ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TransformerConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TransformerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -178,7 +248,7 @@ public class Resum {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
 			FileWriter fw2 = new FileWriter(fichero);
 			BufferedWriter bw2 = new BufferedWriter(fw2);
@@ -192,7 +262,7 @@ public class Resum {
 		}
 	}
 
-	// metodo de para el split con la coma
+
 	public String[] StringAString(String lin) {
 		String[] coma = lin.split(",");
 		return coma;
