@@ -1,0 +1,47 @@
+frameLogin:"Login Concesonario"
+lblLogin:"Usuario:"
+lblPassword:"Contraseña:"
+btnLogin:"Entrar"
+frameDatosCliente:"Datos del Cliente"
+labelNombre:"Nombre*"
+labelPrimerApellido:"Primer Apellido*"
+labelSegundoApellido:"Segundo Apellido*"
+labelDireccion:"Direccion*"
+labelGenero:"Genero"
+labelFecha:"Fecha Nacimiento"
+rbHombre:"Hombre"
+rbMujer:"Mujer"
+rbNoDeterminado:"No determinado"
+botonGuardar:"Guardar"
+botonSiguiente:"Siguiente"
+labelDatosCliente:"DATOS DEL CLIENTE"
+labelUsuario:"Usuario:"
+javax.swing.JFrame:"Seleccion del coche"
+titulo:"SELECCIONA EL MODELO DEL COCHE"
+btnAnterior:"Anterior"
+btnSiguiente:"Siguiente"
+usuario:"Usuario:"
+frameSubmodelo:"Seleccion del submodelo"
+lblTitulo:"Seleccion de caracteristicas del modelo"
+datosCoche:"Informacion del coche"
+textArg:"Total precio:"
+acc1:"AutoRadio"
+acc2:"SistemaMultimedia"
+acc3:"KitManosLibres"
+acc4:"Altavoces"
+acc5:"Tapacubos"
+acc6:"CadenasDeNieve"
+btnAtras:"Atras"
+btnFinalizar:"Finalizar"
+frameResumen:"Pantalla Resumen"
+titulo_Resumen:"Resumen:"
+vueltaLogin:"Volver a los datos del cliente"
+
+
+
+
+
+
+
+
+
