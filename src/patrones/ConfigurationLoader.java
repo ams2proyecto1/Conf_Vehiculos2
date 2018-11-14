@@ -18,6 +18,11 @@ public class ConfigurationLoader {
 	private String specifications_file_path;
 	private String specifications_file_name;
 	private String version;
+	private String[] language;
+	private String language_default;
+	private String postfix_language_file_name;
+	private String language_files_path;
+	private String descompte;
 
 	private ConfigurationLoader() {
 		Leer_XML_Conf lxml = new Leer_XML_Conf();
@@ -33,7 +38,6 @@ public class ConfigurationLoader {
 
 	public void rellenarDatos(Leer_XML_Conf lxml) {
 		Leer_XML_Conf.leerConfig();
-
 		car_configuration_file_name = lxml.getCarConfigName();
 		car_configuration_path = lxml.getCarConfigPath();
 		employee_list = lxml.getUser();
@@ -42,7 +46,10 @@ public class ConfigurationLoader {
 		specifications_file_path = lxml.getSpecFilePath();
 		specifications_file_name = lxml.getSpecFileName();
 		version = lxml.getVersion();
-
+		language = lxml.getLanguage();
+		language_default = lxml.getLanguage_default();
+		postfix_language_file_name = lxml.getPostfix_language_file_name();
+		language_files_path = lxml.getLanguage_files_path();
 	}
 
 	public String getCar_configuration_path() {
@@ -72,5 +79,28 @@ public class ConfigurationLoader {
 	public String getVersion() {
 		return version;
 	}
+
+	public String[] getLanguage() {
+		return language;
+	}
+
+	public String getLanguage_default() {
+		return language_default;
+	}
+
+	public String getPostfix_language_file_name() {
+		return postfix_language_file_name;
+	}
+
+	public String getLanguage_files_path() {
+		return language_files_path;
+	}
+
+	public String getDescompte() {
+		return descompte;
+	}
+	
+	
+	
 
 }

@@ -11,7 +11,6 @@ public class Presupuesto {
 
 
 	public Presupuesto(String nombreCliente, String modelo, String submodelo, String accesorios, String precioTotal) {
-		super();
 		this.nombreCliente = nombreCliente;
 		this.modelo = modelo;
 		this.submodelo = submodelo;

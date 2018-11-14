@@ -1,5 +1,3 @@
+Datos Temporales
 [Login] Carlos
-[Cliente] xd,xd,d,xd,xd@gmail.com,null,null
-[Modelo] 0003
-[SubModelo] Diesel con 4 Velocidades y manejo Manual
-[Accesorios] , AutoRadio, KitManosLibres, Altavoces, Tapacubos, CadenasDeNieve
+[Cliente] xd,xd,xd,xd,xd@gmail.com,null,null

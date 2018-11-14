@@ -169,6 +169,7 @@ public class Resum {
 			try {
 				Presupuesto p = new Presupuesto(separado[0], modelo, submodelo, accesorios,
 						Double.toString(Compra_Accesorios.precio));
+				
 				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder build;
 				build = factory.newDocumentBuilder();
@@ -176,28 +177,28 @@ public class Resum {
 				Element rootElement = doc.createElement("Presupuesto");
 				doc.appendChild(rootElement);
 
-				Element empleado = doc.createElement(p.getClass().getSimpleName());
-				rootElement.appendChild(empleado);
+				Element cliente = doc.createElement(p.getClass().getSimpleName());
+				rootElement.appendChild(cliente);
 
 				Element nombre = doc.createElement("NombreCliente");
 				nombre.appendChild(doc.createTextNode(p.getNombreCliente()));
-				empleado.appendChild(nombre);
+				cliente.appendChild(nombre);
 
 				Element model = doc.createElement("Modelo");
 				model.appendChild(doc.createTextNode(p.getModelo()));
-				empleado.appendChild(model);
+				cliente.appendChild(model);
 
 				Element submodel = doc.createElement("SubModelo");
 				submodel.appendChild(doc.createTextNode(p.getSubmodelo()));
-				empleado.appendChild(submodel);
+				cliente.appendChild(submodel);
 
 				Element acc = doc.createElement("Accesorios");
 				acc.appendChild(doc.createTextNode(p.getAccesorios()));
-				empleado.appendChild(acc);
+				cliente.appendChild(acc);
 
 				Element precioFinal = doc.createElement("PrecioTotal");
 				precioFinal.appendChild(doc.createTextNode(p.getPrecioTotal()));
-				empleado.appendChild(precioFinal);
+				cliente.appendChild(precioFinal);
 
 				TransformerFactory tf = TransformerFactory.newInstance();
 				Transformer trans = tf.newTransformer();

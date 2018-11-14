@@ -11,11 +11,16 @@
 		<password>Contr</password>
 	</employee_password>
 	<specifications_file_path>./ficheros/</specifications_file_path>
-    <specifications_file_name>idiomaEsp.txt</specifications_file_name>
+    <specifications_file_name>fs_employee._</specifications_file_name>
 	<version>2.0</version>
 	<employee_version>true</employee_version>
-	<language>es,ca,en</language>
+	<language>
+		<idioma>ca</idioma>
+		<idioma>en</idioma>
+		<idioma>es</idioma>
+	</language>
 	<language_default>es</language_default>
 	<postfix_language_file_name>_cv.language</postfix_language_file_name>
 	<language_files_path>./ficheros/</language_files_path>
+	<descompte>21</descompte>
 </configuracion>
