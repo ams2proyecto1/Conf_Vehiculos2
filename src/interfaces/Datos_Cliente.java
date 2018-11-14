@@ -35,6 +35,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -282,7 +283,7 @@ public class Datos_Cliente {
 		if (f.exists()) {
 			BufferedWriter bw = null;
 			try {
-				String[] cadenaArray = new String[3];
+				ArrayList<String> cadenaArray = new ArrayList<>();
 
 				BufferedReader br = new BufferedReader(new FileReader(f));
 
@@ -290,7 +291,7 @@ public class Datos_Cliente {
 				int contador = 0;
 				int i = 0;
 				while ((cadena = br.readLine()) != null) {
-					cadenaArray[i] = cadena;
+					cadenaArray.add(cadena);
 					contador++;
 					i++;
 
@@ -299,9 +300,9 @@ public class Datos_Cliente {
 				if (contador == 3) {
 					cargarDatos();
 					bw = new BufferedWriter(new FileWriter("./ficheros/temp/fs_employee.txt"));
-					bw.write(cadenaArray[0]);
+					bw.write(cadenaArray.get(0));
 					bw.newLine();
-					bw.write(cadenaArray[1]);
+					bw.write(cadenaArray.get(1));
 					bw.close();
 				}
 
