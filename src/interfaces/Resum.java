@@ -157,9 +157,7 @@ public class Resum {
 			fr.close();
 			br.close();
 
-			for (String string : texto) {
-				System.out.println(string);
-			}
+			crearFicheroFinal(texto);
 
 			String datosCliente = texto.get(1).replace("[Cliente] ", "");
 
