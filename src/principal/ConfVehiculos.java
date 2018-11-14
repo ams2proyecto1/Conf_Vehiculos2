@@ -95,6 +95,17 @@ class ConfVehiculos {
 					e.printStackTrace();
 				}
 			}
+		}else {
+			try {
+				iniciarVentanaLogin();
+				FileWriter fw = new FileWriter(f);
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write("Dato temporal");
+				bw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }
