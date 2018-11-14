@@ -42,6 +42,7 @@ import java.util.regex.Pattern;
 
 public class Datos_Cliente {
 
+	
 	private JFrame frameDatosCliente;
 	private JTextField txtNombre;
 	private JTextField txtPrimerApellido;

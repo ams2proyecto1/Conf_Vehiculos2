@@ -38,6 +38,7 @@ import javax.swing.JButton;
 
 public class Resum {
 
+	
 	private JFrame frameResumen;
 
 	/**

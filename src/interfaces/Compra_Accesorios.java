@@ -35,6 +35,7 @@ import javax.swing.JButton;
 
 public class Compra_Accesorios extends JFrame {
 	private JPanel contentPane;
+	
 	JCheckBox acc1;
 	JCheckBox acc2;
 	JCheckBox acc3;

@@ -28,6 +28,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
 public class Seleccion_Coche extends JFrame {
+	
 	JLabel usuario;
 	private JPanel contentPane;
 	private JTextArea info;
