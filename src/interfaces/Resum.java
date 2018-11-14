@@ -139,14 +139,13 @@ public class Resum {
 				bw.write(string);
 				bw.newLine();
 			}
-			
+
 			bw.close();
 			fw.close();
 			fr.close();
 			br.close();
 
 			crearFicheroFinal(texto);
-			
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -162,6 +161,9 @@ public class Resum {
 		String fechaActual = formatoFecha.format(new Date());
 		SimpleDateFormat formatoHora = new SimpleDateFormat("HH;mm");
 		String hora = formatoHora.format(new Date());
+
+		File fichero = new File("./ficheros/temp/fs_employee.txt");
+
 		try {
 			FileWriter fw = new FileWriter("./ficheros/compras/fs_employee" + fechaActual + "_" + hora + ".txt");
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -171,6 +173,18 @@ public class Resum {
 				bw.newLine();
 			}
 			bw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			FileWriter fw2 = new FileWriter(fichero);
+			BufferedWriter bw2 = new BufferedWriter(fw2);
+			bw2.write("Datos Temporales");
+			bw2.newLine();
+			bw2.write("[Login] " + Login.user);
+			bw2.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

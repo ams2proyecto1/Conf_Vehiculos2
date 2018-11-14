@@ -192,7 +192,7 @@ public class Datos_Cliente {
 			}
 		});
 
-		labelUsuario = new JLabel("Usuario:");
+		labelUsuario = new JLabel("Usuario:" + Login.user);
 		GroupLayout groupLayout = new GroupLayout(frameDatosCliente.getContentPane());
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(groupLayout
 				.createSequentialGroup().addGap(40)
@@ -313,42 +313,7 @@ public class Datos_Cliente {
 				e.printStackTrace();
 			}
 
-			// try {
-			// String cadena;
-			// FileReader fr = new FileReader(f);
-			// BufferedReader br = new BufferedReader(fr);
-			// int contador = 1;
-			// while(br.readLine()!=null) {
-			// if(contador==3) {
-			// FileWriter fw = new FileWriter(f);
-			// BufferedWriter bw = new BufferedWriter(fw);
-			// cadena = br.readLine();
-			// String[] datos = cadena.split(",");
-			// txtNombre.setText(datos[0]);
-			// txtPrimerApellido.setText(datos[1]);
-			// txtSegundoApellido.setText(datos[2]);
-			// txtDireccion.setText(datos[3]);
-			// txtCorreo.setText(datos[4]);
-			//
-			// if (datos[5].equals("No determinado")) {
-			// rbNoDeterminado.setSelected(true);
-			// } else if (datos[5].equals("Mujer")) {
-			// rbMujer.setSelected(true);
-			// } else {
-			// rbHombre.setSelected(true);
-			// }
-			// bw.write("");
-			// bw.close();
-			// br.close();
-			// }else {
-			// contador++;
-			// }
-			// }
-			//
-			// } catch (IOException e1) {
-			// // TODO Auto-generated catch block
-			// e1.printStackTrace();
-			// }
+
 		}
 	}
 

@@ -31,7 +31,7 @@ public class Seleccion_Coche extends JFrame {
 	JLabel usuario;
 	private JPanel contentPane;
 	private JTextArea info;
-	public static  int cocheSeleccionado;
+	public static int cocheSeleccionado;
 	private File cocheSelected;
 	private JLabel ImagenSelect;
 	ArrayList<Model> modelos;
@@ -86,7 +86,8 @@ public class Seleccion_Coche extends JFrame {
 				// Compra_Accesorios ca = new Compra_Accesorios();
 				// ca.setVisible(true);
 				try {
-					FileWriter fw = new FileWriter("./ficheros/temp/fs_employee.txt",true);
+					System.out.println("hola");
+					FileWriter fw = new FileWriter("./ficheros/temp/fs_employee.txt", true);
 					BufferedWriter bw = new BufferedWriter(fw);
 					bw.newLine();
 					bw.write("[Modelo] " + modelos.get(cocheSeleccionado).getId());
@@ -95,7 +96,7 @@ public class Seleccion_Coche extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+
 				Seleccion_Submodelo ss = new Seleccion_Submodelo();
 				ss.getFrame().setVisible(true);
 				dispose();
@@ -128,7 +129,7 @@ public class Seleccion_Coche extends JFrame {
 					cocheSelected = new File("./ficheros/temp/cocheSelected.txt");
 					FileWriter fw = new FileWriter(cocheSelected);
 					fw.write("0");
-					cocheSeleccionado=0;
+					cocheSeleccionado = 0;
 					fw.close();
 
 				} catch (IOException e1) {
@@ -150,7 +151,7 @@ public class Seleccion_Coche extends JFrame {
 					cocheSelected = new File("./ficheros/temp/cocheSelected.txt");
 					FileWriter fw = new FileWriter(cocheSelected);
 					fw.write("1");
-					cocheSeleccionado= 1;
+					cocheSeleccionado = 1;
 					fw.close();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -170,7 +171,7 @@ public class Seleccion_Coche extends JFrame {
 					cocheSelected = new File("./ficheros/temp/cocheSelected.txt");
 					FileWriter fw = new FileWriter(cocheSelected);
 					fw.write("2");
-					cocheSeleccionado= 2;
+					cocheSeleccionado = 2;
 					fw.close();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -190,7 +191,7 @@ public class Seleccion_Coche extends JFrame {
 					cocheSelected = new File("./ficheros/temp/cocheSelected.txt");
 					FileWriter fw = new FileWriter(cocheSelected);
 					fw.write("3");
-					cocheSeleccionado= 3;
+					cocheSeleccionado = 3;
 					fw.close();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -211,7 +212,7 @@ public class Seleccion_Coche extends JFrame {
 					cocheSelected = new File("./ficheros/temp/cocheSelected.txt");
 					FileWriter fw = new FileWriter(cocheSelected);
 					fw.write("4");
-					cocheSeleccionado= 4;
+					cocheSeleccionado = 4;
 					fw.close();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -231,7 +232,7 @@ public class Seleccion_Coche extends JFrame {
 					cocheSelected = new File("./ficheros/temp/cocheSelected.txt");
 					FileWriter fw = new FileWriter(cocheSelected);
 					fw.write("5");
-					cocheSeleccionado= 5;
+					cocheSeleccionado = 5;
 					fw.close();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -251,7 +252,7 @@ public class Seleccion_Coche extends JFrame {
 					cocheSelected = new File("./ficheros/temp/cocheSelected.txt");
 					FileWriter fw = new FileWriter(cocheSelected);
 					fw.write("6");
-					cocheSeleccionado= 6;
+					cocheSeleccionado = 6;
 					fw.close();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -262,13 +263,6 @@ public class Seleccion_Coche extends JFrame {
 			}
 		});
 
-		
-		
-		
-		
-		
-		
-		
 		// ---------------------------------------------------------------------INTERFAZ---------------------------------------------------------------------------
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
@@ -327,6 +321,7 @@ public class Seleccion_Coche extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 
 		// ---------------------------------------------------------------------INTERFAZ---------------------------------------------------------------------------
+		borrarLastLine();
 	}
 
 	public void cargarDefecto() {
@@ -355,6 +350,47 @@ public class Seleccion_Coche extends JFrame {
 				info = new JTextArea();
 				info.setText(modelos.get(cocheSeleccionado).getDescript());
 				info.setLineWrap(true);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+	private void borrarLastLine() {
+		File f = new File("./ficheros/temp/fs_employee.txt");
+		if (f.exists()) {
+			BufferedWriter bw = null;
+			try {
+				String[] cadenaArray = new String[4];
+
+				BufferedReader br = new BufferedReader(new FileReader(f));
+
+				String cadena;
+				int contador = 0;
+				int i = 0;
+				while ((cadena = br.readLine()) != null) {
+					cadenaArray[i] = cadena;
+					contador++;
+					i++;
+
+				}
+
+				if (contador == 4) {
+					bw = new BufferedWriter(new FileWriter("./ficheros/temp/fs_employee.txt"));
+					bw.write(cadenaArray[0]);
+					bw.newLine();
+					bw.write(cadenaArray[1]);
+					bw.newLine();
+					bw.write(cadenaArray[2]);
+					bw.close();
+				}
+
+				br.close();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

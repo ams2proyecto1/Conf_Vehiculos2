@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -40,19 +41,19 @@ public class Seleccion_Submodelo {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Seleccion_Submodelo window = new Seleccion_Submodelo();
-//					
-//
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	// public static void main(String[] args) {
+	// EventQueue.invokeLater(new Runnable() {
+	// public void run() {
+	// try {
+	// Seleccion_Submodelo window = new Seleccion_Submodelo();
+	//
+	//
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	// }
+	// });
+	// }
 
 	/**
 	 * Create the application.
@@ -66,10 +67,10 @@ public class Seleccion_Submodelo {
 	 */
 	private void initialize() {
 		frameSubmodelo = new JFrame();
-		
+
 		frameSubmodelo.setTitle("Seleccion del submodelo");
-		
-		//Icono seat
+
+		// Icono seat
 		frameSubmodelo.setIconImage(Toolkit.getDefaultToolkit().getImage("./imagenes/seat-icono.png"));
 		frameSubmodelo.setBounds(100, 100, 450, 350);
 		frameSubmodelo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,27 +89,27 @@ public class Seleccion_Submodelo {
 
 		btnAnterior = new JButton("Anterior");
 		btnAnterior.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				Seleccion_Coche sc = new Seleccion_Coche();
 				sc.setVisible(true);
 				frameSubmodelo.dispose();
-				
+
 			}
 		});
 		btnAnterior.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		btnSiguiente = new JButton("Siguiente");
 		btnSiguiente.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				datosSeleccioandos = (String) listaSbm.getSelectedValue();
-				
+
 				try {
-					FileWriter fw = new FileWriter("./ficheros/temp/fs_employee.txt",true);
+					FileWriter fw = new FileWriter("./ficheros/temp/fs_employee.txt", true);
 					BufferedWriter bw = new BufferedWriter(fw);
 					bw.newLine();
 					bw.write("[SubModelo] " + datosSeleccioandos);
@@ -117,11 +118,11 @@ public class Seleccion_Submodelo {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+
 				Compra_Accesorios ca = new Compra_Accesorios();
 				ca.setVisible(true);
 				frameSubmodelo.dispose();
-				
+
 			}
 		});
 		btnSiguiente.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -143,6 +144,9 @@ public class Seleccion_Submodelo {
 						.createParallelGroup(Alignment.BASELINE).addComponent(btnAnterior).addComponent(btnSiguiente))
 				.addGap(48)));
 		frameSubmodelo.getContentPane().setLayout(groupLayout);
+		
+		borrarLastLine();
+
 	}
 
 	public static void leerArchivo(JList<String> listaSbm, DefaultListModel<String> dlm) throws IOException {
@@ -168,11 +172,54 @@ public class Seleccion_Submodelo {
 				}
 			}
 		}
-		
+
 	}
-	
+
 	public JFrame getFrame() {
 		return frameSubmodelo;
+	}
+	
+	private void borrarLastLine() {
+		File f = new File("./ficheros/temp/fs_employee.txt");
+		if (f.exists()) {
+			BufferedWriter bw = null;
+			try {
+				String[] cadenaArray = new String[5];
+
+				BufferedReader br = new BufferedReader(new FileReader(f));
+
+				String cadena;
+				int contador = 0;
+				int i = 0;
+				while ((cadena = br.readLine()) != null) {
+					cadenaArray[i] = cadena;
+					contador++;
+					i++;
+
+				}
+
+				if (contador == 5) {
+					bw = new BufferedWriter(new FileWriter("./ficheros/temp/fs_employee.txt"));
+					bw.write(cadenaArray[0]);
+					bw.newLine();
+					bw.write(cadenaArray[1]);
+					bw.newLine();
+					bw.write(cadenaArray[2]);
+					bw.newLine();
+					bw.write(cadenaArray[3]);
+					bw.close();
+				}
+
+				br.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 }

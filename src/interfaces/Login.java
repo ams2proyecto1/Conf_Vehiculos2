@@ -32,7 +32,7 @@ public class Login {
 	private JFrame frameLogin;
 	private JTextField tfLogin;
 	private JPasswordField passwordField;
-	private String user;
+	public static String user;
 	private String pass;
 
 	public Login() {
@@ -49,7 +49,7 @@ public class Login {
 			f.delete();
 		}
 		if (coches.exists()) {
-			f.delete();
+			coches.delete();
 		}
 
 		frameLogin = new JFrame();
