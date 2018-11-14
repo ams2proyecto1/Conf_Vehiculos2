@@ -27,6 +27,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 import manageXML.Leer_XML_Cars;
+import multidioma.Language;
+import multidioma.LectorLanguage;
 import objetos.Engine;
 import objetos.Model;
 
@@ -38,6 +40,7 @@ public class Seleccion_Submodelo {
 	private JButton btnAnterior;
 	private JButton btnSiguiente;
 	private String datosSeleccioandos;
+	private static Language texts = LectorLanguage.getLanguage();
 
 	/**
 	 * Launch the application.
@@ -69,14 +72,14 @@ public class Seleccion_Submodelo {
 	private void initialize() {
 		frameSubmodelo = new JFrame();
 
-		frameSubmodelo.setTitle("Seleccion del submodelo");
+		frameSubmodelo.setTitle(texts.getFrameSubmodelo());
 
 		// Icono seat
 		frameSubmodelo.setIconImage(Toolkit.getDefaultToolkit().getImage("./imagenes/seat-icono.png"));
 		frameSubmodelo.setBounds(100, 100, 450, 350);
 		frameSubmodelo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameSubmodelo.setVisible(true);
-		lblTitulo = new JLabel("Seleccion de caracteristicas del modelo");
+		lblTitulo = new JLabel(texts.getLblTitulo());
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 14));
 
 		DefaultListModel<String> dlm = new DefaultListModel<String>();
@@ -88,7 +91,7 @@ public class Seleccion_Submodelo {
 			e.printStackTrace();
 		}
 
-		btnAnterior = new JButton("Anterior");
+		btnAnterior = new JButton(texts.getBtnAnterior());
 		btnAnterior.addActionListener(new ActionListener() {
 
 			@Override
@@ -102,7 +105,7 @@ public class Seleccion_Submodelo {
 		});
 		btnAnterior.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
-		btnSiguiente = new JButton("Siguiente");
+		btnSiguiente = new JButton(texts.getBtnSiguiente());
 		btnSiguiente.addActionListener(new ActionListener() {
 
 			@Override

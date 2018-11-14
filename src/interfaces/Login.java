@@ -10,6 +10,9 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import multidioma.Language;
+import multidioma.LectorLanguage;
 import patrones.ConfigurationLoader;
 import validaciones.ValUserPass;
 
@@ -35,6 +38,7 @@ public class Login {
 	private JPasswordField passwordField;
 	public static String user;
 	private String pass;
+	private static Language texts = LectorLanguage.getLanguage();
 
 	public Login() {
 		initialize();
@@ -56,7 +60,7 @@ public class Login {
 		frameLogin = new JFrame();
 
 		// titulo Ventana
-		frameLogin.setTitle("Login Concesionario");
+		frameLogin.setTitle(texts.getFrameLogin());
 
 		// Icono seat
 		frameLogin.setIconImage(Toolkit.getDefaultToolkit().getImage("./imagenes/seat-icono.png"));
@@ -64,14 +68,14 @@ public class Login {
 		frameLogin.setBounds(100, 100, 347, 227);
 		frameLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		JLabel lblLogin = new JLabel("Usuario:");
+		JLabel lblLogin = new JLabel(texts.getLblLogin());
 		frameLogin.setLocationRelativeTo(null);
 		tfLogin = new JTextField();
 		tfLogin.setColumns(10);
 
-		JLabel lblPassword = new JLabel("Contrase\u00F1a:");
+		JLabel lblPassword = new JLabel(texts.getLblPassword());
 
-		JButton btnLogin = new JButton("Entrar");
+		JButton btnLogin = new JButton(texts.getBtnLogin());
 		// btnLogin.addActionListener(l);;
 
 		btnLogin.addActionListener(new ActionListener() {

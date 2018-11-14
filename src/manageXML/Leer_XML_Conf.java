@@ -23,6 +23,7 @@ public class Leer_XML_Conf {
 	private static String language_default;
 	private static String postfix_language_file_name;
 	private static String language_files_path;
+	private static String descompte;
 
 	public static void leerConfig() {
 		// ConfigXML conf1 = new ConfigXML();
@@ -47,7 +48,7 @@ public class Leer_XML_Conf {
 
 					NodeList nUser = document.getElementsByTagName("login");
 					NodeList nPass = document.getElementsByTagName("password");
-					NodeList nLanguage = document.getElementsByTagName("language");
+					NodeList nLanguage = document.getElementsByTagName("idioma");
 
 					user = new String[nUser.getLength()];
 					pass = new String[nPass.getLength()];
@@ -86,6 +87,7 @@ public class Leer_XML_Conf {
 					language_default = eElement.getElementsByTagName("language_default").item(0).getTextContent();
 					postfix_language_file_name = eElement.getElementsByTagName("postfix_language_file_name").item(0).getTextContent();
 					language_files_path = eElement.getElementsByTagName("language_files_path").item(0).getTextContent();
+					descompte = eElement.getElementsByTagName("descompte").item(0).getTextContent();
 					
 					
 					
@@ -146,7 +148,31 @@ public class Leer_XML_Conf {
 	public static String getLanguage_files_path() {
 		return language_files_path;
 	}
-	
-	
 
+	public static String getDescompte() {
+		return descompte;
+	}
+	
+	 public static boolean isNumeric(String cadena) {
+	        boolean resultado;
+	        try {
+	            Integer.parseInt(cadena);
+	            resultado = true;
+	        } catch (NumberFormatException excepcion) {
+	            resultado = false;
+	        }
+	        return resultado;
+	    }
+
+	public static void setDescompte(String descompte) {
+		if (isNumeric(descompte) == true && Integer.parseInt(descompte) < 22 && Integer.parseInt(descompte) > 0 ) {
+			Leer_XML_Conf.descompte = descompte;
+//			System.out.println("Descuento valido");
+		} else {
+			Leer_XML_Conf.descompte = ("0");
+//			System.out.println("Descuento invalido");
+		}
+	}
+	
+	
 }

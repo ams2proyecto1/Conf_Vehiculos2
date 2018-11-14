@@ -45,6 +45,8 @@ import org.w3c.dom.Element;
 import datos.Presupuesto;
 import manageXML.Leer_XML_Cars;
 import manageXML.Leer_XML_Conf;
+import multidioma.Language;
+import multidioma.LectorLanguage;
 import objetos.Engine;
 import objetos.Model;
 import javax.swing.JButton;
@@ -53,23 +55,11 @@ public class Resum {
 
 	private JFrame frameResumen;
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	 * public static void main(String[] args) { EventQueue.invokeLater(new
-	 * Runnable() { public void run() { try { Resum window = new Resum();
-	 * window.frame.setVisible(true); } catch (Exception e) { e.printStackTrace(); }
-	 * } }); }
-	 */
-
-	/**
-	 * Create the application.
-	 */
+	private static Language texts = LectorLanguage.getLanguage();
 	public Resum() {
 		File f = new File("./ficheros/temp/fs_employee.txt");
 		frameResumen = new JFrame();
-		frameResumen.setTitle("Pantalla Resumen");
+		frameResumen.setTitle(texts.getFrameResumen());
 		frameResumen.setBounds(100, 100, 450, 312);
 		frameResumen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -82,7 +72,7 @@ public class Resum {
 		// Lee el fichero y lo introduce en el text area
 		leer_fichero(textArea);
 		borrarLineaTemporal();
-		JButton vueltaLogin = new JButton("Volver a los datos del cliente");
+		JButton vueltaLogin = new JButton(texts.getVueltaLogin());
 		vueltaLogin.addActionListener(new ActionListener() {
 
 			@Override

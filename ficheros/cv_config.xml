@@ -15,9 +15,9 @@
 	<version>2.0</version>
 	<employee_version>true</employee_version>
 	<language>
-		<idioma>ca</idioma>
 		<idioma>en</idioma>
 		<idioma>es</idioma>
+		<idioma>ca</idioma>
 	</language>
 	<language_default>es</language_default>
 	<postfix_language_file_name>_cv.language</postfix_language_file_name>

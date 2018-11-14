@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import manageXML.Leer_XML_Cars;
+import multidioma.Language;
+import multidioma.LectorLanguage;
 import objetos.Model;
 
 import javax.swing.JLabel;
@@ -36,6 +38,7 @@ public class Seleccion_Coche extends JFrame {
 	private File cocheSelected;
 	private JLabel ImagenSelect;
 	ArrayList<Model> modelos;
+	private static Language texts = LectorLanguage.getLanguage();
 	/**
 	 * Launch the application.
 	 */
@@ -57,7 +60,7 @@ public class Seleccion_Coche extends JFrame {
 	 */
 	public Seleccion_Coche() {
 
-		setTitle("Seleccion del coche");
+		setTitle(texts.getTitulo());
 
 		// Imagen Icono
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./imagenes/seat-icono.png"));
@@ -69,7 +72,7 @@ public class Seleccion_Coche extends JFrame {
 		setLocationRelativeTo(null);
 		setContentPane(contentPane);
 
-		JLabel titulo = new JLabel("SELECCIONA EL MODELO DEL COCHE");
+		JLabel titulo = new JLabel(texts.getTitulo());
 		titulo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
 		ImagenSelect = new JLabel();
@@ -80,7 +83,7 @@ public class Seleccion_Coche extends JFrame {
 		// \ncapacidad de transporte.");
 		// info.setLineWrap(true);
 
-		JButton btnSiguiente = new JButton("Siguiente");
+		JButton btnSiguiente = new JButton(texts.getBtnSiguiente());
 		btnSiguiente.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -103,7 +106,7 @@ public class Seleccion_Coche extends JFrame {
 				dispose();
 			}
 		});
-		JButton btnAnterior = new JButton("Anterior");
+		JButton btnAnterior = new JButton(texts.getBtnAnterior());
 		btnAnterior.addActionListener(new ActionListener() {
 
 			@Override
@@ -118,7 +121,7 @@ public class Seleccion_Coche extends JFrame {
 		modelos = cars.getModelAll();
 		cargarDefecto();
 
-		usuario = new JLabel("Usuario: ");
+		usuario = new JLabel(texts.getLabelUsuario() + Login.user);
 		usuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		JButton ImageSEAT1 = new JButton("");

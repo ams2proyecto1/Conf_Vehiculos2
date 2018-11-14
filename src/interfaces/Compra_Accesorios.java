@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import datos.Presupuesto;
 import manageXML.Leer_XML_Cars;
+import multidioma.Language;
+import multidioma.LectorLanguage;
 import objetos.Accesory;
 import objetos.Engine;
 import objetos.Model;
@@ -36,7 +38,7 @@ import javax.swing.JButton;
 
 public class Compra_Accesorios extends JFrame {
 	private JPanel contentPane;
-
+	
 	JCheckBox acc1;
 	JCheckBox acc2;
 	JCheckBox acc3;
@@ -45,6 +47,7 @@ public class Compra_Accesorios extends JFrame {
 	JCheckBox acc6;
 	String accesoriesSelecteds = "";
 	
+	private static Language texts = LectorLanguage.getLanguage();
 	public static double precio;
 	ArrayList<String> accesoriosModelo;
 
@@ -69,7 +72,7 @@ public class Compra_Accesorios extends JFrame {
 	 */
 	public Compra_Accesorios() {
 		obtenerAccesorios();
-		setTitle("Seleccion de accesorios");
+		setTitle(texts.getTitulo());
 
 		// Imagen Icono
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./imagenes/seat-icono.png"));
@@ -80,7 +83,7 @@ public class Compra_Accesorios extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
-		JLabel CompraAccesorio = new JLabel("Compra de Accesorios");
+		JLabel CompraAccesorio = new JLabel(texts.getCompraAccesorios());
 		CompraAccesorio.setFont(new Font("Tahoma", Font.PLAIN, 17));
 
 		JLabel datosCoche = new JLabel("Informacion del coche");
@@ -105,7 +108,7 @@ public class Compra_Accesorios extends JFrame {
 		acc5.setEnabled((accesoriosModelo.contains("Tapacubos")));
 		acc6.setEnabled((accesoriosModelo.contains("CadenasDeNieve")));
 
-		JLabel textArg = new JLabel("Total precio:");
+		JLabel textArg = new JLabel(texts.getTextArg());
 		textArg.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		JTextArea ArgPrecio = new JTextArea();
@@ -115,7 +118,7 @@ public class Compra_Accesorios extends JFrame {
 		precio = Integer.parseInt(modelos.get(Seleccion_Coche.cocheSeleccionado).getPrice());
 		ArgPrecio.setText(Double.toString(precio));
 
-		JButton btnAtras = new JButton("Atras");
+		JButton btnAtras = new JButton(texts.getBtnAtras());
 		btnAtras.addActionListener(new ActionListener() {
 
 			@Override
@@ -188,7 +191,7 @@ public class Compra_Accesorios extends JFrame {
 			}
 		});
 
-		JButton btnFinalizar = new JButton("Finalizar");
+		JButton btnFinalizar = new JButton(texts.getBtnFinalizar());
 		// Este boton se va a la clase de resumen
 		btnFinalizar.addActionListener(new ActionListener() {
 

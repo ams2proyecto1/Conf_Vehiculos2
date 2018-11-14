@@ -13,6 +13,7 @@ public class LectorLanguage {
 		getLanguage();
 	}
 	
+	
 	private static String seleccionarIdioma() {
 		ConfigurationLoader conf = ConfigurationLoader.getConfig();
 		String[] languages = conf.getLanguage();

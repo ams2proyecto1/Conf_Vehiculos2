@@ -10,6 +10,7 @@ public class Language {
 	public String getFrameLogin() {
 		return frameLogin;
 	}
+	
 
 	public String getLblLogin() {
 		return lblLogin;

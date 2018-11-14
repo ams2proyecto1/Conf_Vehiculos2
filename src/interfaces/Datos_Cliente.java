@@ -17,6 +17,8 @@ import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
 import datos.Cliente;
+import multidioma.Language;
+import multidioma.LectorLanguage;
 
 import javax.swing.JButton;
 import javax.swing.AbstractAction;
@@ -57,6 +59,7 @@ public class Datos_Cliente {
 	private JDateChooser dcFechaNacimiento;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JCalendar calendar;
+	private static Language texts = LectorLanguage.getLanguage();
 
 	public Datos_Cliente() {
 		initialize();
@@ -71,7 +74,7 @@ public class Datos_Cliente {
 		frameDatosCliente = new JFrame();
 
 		// titulo Ventana
-		frameDatosCliente.setTitle("Datos del Cliente");
+		frameDatosCliente.setTitle(texts.getFrameDatosCliente());
 
 		// Icono seat
 		frameDatosCliente.setIconImage(Toolkit.getDefaultToolkit().getImage("./imagenes/seat-icono.png"));
@@ -79,21 +82,21 @@ public class Datos_Cliente {
 		frameDatosCliente.setBounds(100, 100, 597, 619);
 		frameDatosCliente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameDatosCliente.setLocationRelativeTo(null);
-		JLabel labelDatosCliente = new JLabel("DATOS DEL CLIENTE");
+		JLabel labelDatosCliente = new JLabel(texts.getLabelDatosCliente());
 		labelDatosCliente.setFont(new Font("Tahoma", Font.BOLD, 24));
 
-		JLabel labelNombre = new JLabel("Nombre *");
+		JLabel labelNombre = new JLabel(texts.getLabelNombre());
 
 		txtNombre = new JTextField();
 		txtNombre.setColumns(10);
 
-		JLabel labelPrimerApellido = new JLabel("Primer Apellido *");
+		JLabel labelPrimerApellido = new JLabel(texts.getLabelPrimerApellido());
 
-		JLabel labelSegundoApellido = new JLabel("Segundo Apellido *");
+		JLabel labelSegundoApellido = new JLabel(texts.getLabelSegundoApellido());
 
-		JLabel labelDireccion = new JLabel("Direccion *");
+		JLabel labelDireccion = new JLabel(texts.getLabelDireccion());
 
-		JLabel labelCorreo = new JLabel("Correo Electronico *");
+		JLabel labelCorreo = new JLabel(texts.getLabelCorreo());
 
 		txtPrimerApellido = new JTextField();
 		txtPrimerApellido.setColumns(10);
@@ -107,18 +110,18 @@ public class Datos_Cliente {
 		txtCorreo = new JTextField();
 		txtCorreo.setColumns(10);
 
-		JLabel labelGenero = new JLabel("Genero");
+		JLabel labelGenero = new JLabel(texts.getLabelGenero());
 
-		rbHombre = new JRadioButton("Hombre");
+		rbHombre = new JRadioButton(texts.getRbHombre());
 		buttonGroup.add(rbHombre);
 
-		rbMujer = new JRadioButton("Mujer");
+		rbMujer = new JRadioButton(texts.getRbMujer());
 		buttonGroup.add(rbMujer);
 
-		rbNoDeterminado = new JRadioButton("No determinado");
+		rbNoDeterminado = new JRadioButton(texts.getRbNoDeterminado());
 		buttonGroup.add(rbNoDeterminado);
 
-		JLabel labelFecha = new JLabel("Fecha Nacimiento");
+		JLabel labelFecha = new JLabel(texts.getLabelFecha());
 
 		dcFechaNacimiento = new JDateChooser();
 		dcFechaNacimiento.getCalendarButton().addActionListener(new ActionListener() {
@@ -128,7 +131,7 @@ public class Datos_Cliente {
 			}
 		});
 
-		JButton botonGuardar = new JButton("Guardar");
+		JButton botonGuardar = new JButton(texts.getBotonGuardar());
 		// 27. Hacer las mismas comprobacionesque se hace con el boton siguiente con el
 		// boton guardar
 		botonGuardar.addActionListener(new ActionListener() {
@@ -170,7 +173,7 @@ public class Datos_Cliente {
 			}
 		});
 
-		JButton botonSiguiente = new JButton("Siguiente");
+		JButton botonSiguiente = new JButton(texts.getBotonSiguiente());
 		botonSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -194,7 +197,7 @@ public class Datos_Cliente {
 			}
 		});
 
-		labelUsuario = new JLabel("Usuario:" + Login.user);
+		labelUsuario = new JLabel(texts.getLabelUsuario() + Login.user);
 		GroupLayout groupLayout = new GroupLayout(frameDatosCliente.getContentPane());
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(groupLayout
 				.createSequentialGroup().addGap(40)
