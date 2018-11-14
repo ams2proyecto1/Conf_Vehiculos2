@@ -7,7 +7,7 @@ public class Presupuesto {
 	private String submodelo;
 	private String accesorios;
 	private String precioTotal;
-	
+	 
 
 
 	public Presupuesto(String nombreCliente, String modelo, String submodelo, String accesorios, String precioTotal) {
